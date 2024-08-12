@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎来到此网页</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+  .container {
+      background-color: rgba(255, 255, 255, 0);
+      padding: 5%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 200%;
+      text-align: center;
+      padding-bottom: 100px; 
+    }
+
+    h1 {
+      color: #d9534f;
+    }
+
+    p {
+      color: #333;
+    }
+
+  .btn {
+      display: inline-block;
+      margin-top: 10%;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #d9534f;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+  .btn:hover {
+      background-color: #c9302c;
+    }
+
+    body {
+      background-image: url('https://p6-flow-imagex-sign.byteimg.com/ocean-cloud-tos/image_skill/a3f624fd-3a20-4407-8823-d3ffb53867fd_1723466515654558645~tplv-a9rns2rl98-web-image.jpeg?rk3s=b14c611d&x-expires=1755002515&x-signature=w%2BbYEu%2FpdaPjOxHJjyYfk2Q7k3g%3D');  /* 更改倒计时期间的背景图片 */
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat; 
+    }
+
+    iframe {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      border: none;
+    }
+
+  .WordArt1 {
+      background-color: rgba(255, 255, 255, 0);
+      position: absolute;
+      top: 0; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      text-align: center; 
+      font-size: 3vw; 
+      font-weight: bold; 
+      padding: 5%; 
+      width: 80vw;
+      max-width: 100%; 
+      border-radius: 8px; 
+    }
+
+  .WordArt2 {
+      background-color: rgba(255, 255, 255, 0);
+      position: absolute;
+      bottom: 0; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      text-align: center; 
+      font-size: 3vw; 
+      font-weight: bold; 
+      padding: 5%; 
+      width: 80vw;
+      max-width: 100%; 
+      border-radius: 8px; 
+    }
+
+    #clock{
+      position: fixed; 
+      top: 50%; 
+      left: 50%;
+      transform: translate(-50%, -50%); 
+      margin:0 0 100px auto;
+      border: 5px double rgba(255, 255, 255, 0);
+      width: 25vw;
+      height: 24vh;
+      line-height:12vh;
+      max-width: 400%; 
+      text-align: center;
+      font-weight: bold;
+      font-size: 40px;
+      color: rgba(15, 241, 45, 0.781);
+    }
+
+    /* 新增样式：隐藏内容 */
+ .hide-content {
+      display: none;
+    }
+  </style>
+
+  <style>
+    /*火焰效果与霓虹效果艺术字*/
+    #fire {
+      margin: 30px;
+      text-shadow: 0 0 5px #fff, 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+    }
+
+    #neon {
+      margin: 30px;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6AB5FF, 0 0 70px #6AB5FF, 0 0 80px #6AB5FF, 0 0 100px #6AB5FF, 0 0 150px #6AB5FF;
+    }
+  </style>
+
+  <script>
+    function showTime(clock) {
+      var now = new Date();
+      var targetDate = new Date(2024, 7, 24, 0, 0, 0);  // 设定目标日期 2024 年 8 月 24 日 00:00:00
+      var timeLeft = targetDate - now;
+
+      if (timeLeft > 0) {
+        var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        var timeString = "距离打开还有：" + days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+        clock.innerHTML = timeString;
+        // 倒计时期间更改标题
+        document.title = "请耐心等待";
+      } else {
+        // 倒计时结束恢复标题
+        document.title = "欢迎来到此网页";
+        // 当时间超过目标日期，显示正常内容并恢复原背景图片
+        document.querySelector('.container').classList.remove('hide-content');
+        document.getElementById('fire').classList.remove('hide-content');
+        document.getElementById('neon').classList.remove('hide-content');
+        document.body.style.backgroundImage = "url('https://haowallpaper.com/link/common/file/previewFileImg/09a41360f46c8458cc9f62e90c523c6809a41360f46c8458cc9f62e90c523c68')";
+        clearInterval(interval);
+      }
+    }
+
+    window.onload = function() {
+      var clock = document.getElementById("clock");
+      var interval = window.setInterval("showTime(clock)", 1000);
+
+      // 初始时隐藏主要内容
+      document.querySelector('.container').classList.add('hide-content');
+      document.getElementById('fire').classList.add('hide-content');
+      document.getElementById('neon').classList.add('hide-content');
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="container hide-content">
+    <h1>生日女孩：胡梦欣</h1>
+    <p>愿日子如花花，你每天笑哈哈</p>
+    <p>无事绊心弦，所念皆如愿</p>
+    <p>且迷这风浪，永远二十赶朝暮</p>
+    <p>旦逢良辰，顺颂时宜 一岁一礼，一寸欢喜</p>
+    <p>渐入佳境，前方的路上温柔闪光</p>
+    <p>祝你前路浩浩荡荡，万事尽可期</p>
+    <p>一生明朗，生日快乐！</p>
+    <a href="https://p6-flow-imagex-sign.byteimg.com/ocean-cloud-tos/image_skill/54629ea8-a21f-42f7-9f9e-949ea8395d8e_1723454973047343859~tplv-a9rns2rl98-web-image.jpeg?rk3s=b14c611d&x-expires=1754990973&x-signature=6VROd56N%2Bs%2BnA5zpeq8vMMZS8Y8%3D" id="hidden-link" class="btn">进入许愿</a>
+
+  </div>
+
+  <div id="clock"></div>
+
+  <div id="fire" class="WordArt1 hide-content">生日快乐</div>
+  <div id="neon" class="WordArt2 hide-content">Happy birthday ！</div>
+
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=80 src="https://music.163.com/outchain/player?type=2&id=1334295185&auto=1&height=66"></iframe>
+</body>
+
+</html>
